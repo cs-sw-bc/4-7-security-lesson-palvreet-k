@@ -52,7 +52,12 @@ async function start() {
   }
 
   // Password hashing happens here (server-side). We store only the hash.
-  setStaffUser({ email: staffEmail.trim().toLowerCase(), staffPassword });
+  //ChangeMe123!
+  //bcrypt - hashing values js package
+  //2^10 = 1024
+  const passwordHash = await bcrypt.hash(staffPassword, 12)
+  console.log(passwordHash);
+  setStaffUser({ email: staffEmail.trim().toLowerCase(), passwordHash });
 
   const port = process.env.PORT || 3000;
   app.listen(port, () => {

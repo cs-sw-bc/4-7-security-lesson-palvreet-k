@@ -5,7 +5,22 @@ function validateLogin(e) {
   const errorEl = document.getElementById('clientError');
 
   errorEl.textContent = '';
-
+  // if user has typed in an email/password
+  if(!email || !password){
+    errorEl.textContent = 'Email and password are mandatory'
+    return false
+  }
+  if(email.length>100){
+     errorEl.textContent = 'Email cannot be greater than 100 characters'
+    return false
+  }
+  // email format- REGEX
+  //abcd1243@gmail.com
+  if(!/^[a-zA-Z0-9]+@[a-z]+\.[a-z]+$/.test(email)){
+    e.preventDefault();
+     errorEl.textContent = 'Email format is incorrect'
+    return false
+  }
   return true;
 }
 

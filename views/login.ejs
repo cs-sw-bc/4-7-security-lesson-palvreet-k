@@ -18,12 +18,12 @@
       </div>
     <% } %>
 
-    <form id="loginForm" method="POST" action="/login"  novalidate>
+    <form id="loginForm" method="POST" action="/login" onsubmit="return validateLogin(event)" novalidate>
       <label for="email">Email</label>
-      <input id="email" name="email" type="email" value="<%= values.email %>" />
+      <input id="email" name="email" type="email" value="<%= values.email %>" required />
 
       <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
+      <input id="password" name="password" type="password" required/>
 
       <button type="submit">Log in</button>
     </form>
